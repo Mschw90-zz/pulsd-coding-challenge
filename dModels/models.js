@@ -35,6 +35,38 @@ var Product = sequelize.define( 'products', {
     product_phonenumber: {
         type: Sequelize.INTEGER,
         allowNull: true
+    },
+    eventbrite: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false
+    },
+    event_start_time: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    event_end_time: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    event_start_timezone: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    event_end_timezone: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    curreny: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    venue_id: {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
+    online_event: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false
     }
 })
 
@@ -51,9 +83,10 @@ var Test = sequelize.define( 'tests', {
     }
 })
 
+// Eventbrite.hasMany(Product);
+
 module.exports = {
     sequelize,
     Product,
     Test
-    // LastRun
 };

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
+import DatePicker from 'material-ui/DatePicker';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,7 +12,9 @@ export default class App extends Component {
       discription: '',
       price: '',
       location: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      startTime: '',
+      endTime: '',
     };
   }
 
@@ -24,7 +27,9 @@ export default class App extends Component {
          discription: '',
          price: '',
          location: '',
-         phoneNumber: ''
+         phoneNumber: '',
+         startTime: '',
+         endTime: ''
        })
        alert("Successful add to Database");
      })
@@ -68,13 +73,40 @@ export default class App extends Component {
             onChange={(e)=>(this.setState({phoneNumber: e.target.value}))}
             floatingLabelText="Phone Number"
           /><br />
+          <TextField
+            value={this.state.timezone}
+            onChange={(e)=>(this.setState({timezone: e.target.value}))}
+            floatingLabelText="Timezone (America/New_York)"
+
+          /><br />
+          <br />
+
+          <label>Start Time and Date</label><br/>
+          <input
+             onChange={(e)=>(this.setState({startTime: e.target.value}))}
+             type="datetime-local"
+             value={this.state.startTime}
+
+          ></input><br/>
+          <br />
+          <label>End Time and Date</label><br/>
+          <input
+             onChange={(e)=>(this.setState({endTime: e.target.value}))}
+             type="datetime-local"
+             value={this.state.endTime}
+          ></input><br/>
+          <br/>
+
         </div>
+
+
         <RaisedButton
-          label="Primary"
+          label="Submit"
           primary={true}
           style={{margin: 12}}
           onClick={this.register.bind(this)}
         />
+
 
       </div>
     );
