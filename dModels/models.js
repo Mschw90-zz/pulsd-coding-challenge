@@ -38,7 +38,22 @@ var Product = sequelize.define( 'products', {
     }
 })
 
+var Test = sequelize.define( 'tests', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    timingL: {
+      type: Sequelize.INTEGER,
+      allowNull: true
+    }
+})
+
 module.exports = {
     sequelize,
-    Product
+    Product,
+    Test
+    // LastRun
 };
