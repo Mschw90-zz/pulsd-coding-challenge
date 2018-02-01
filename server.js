@@ -7,11 +7,11 @@ const config = require('./webpack.config');
 const db = require('./dModels/models.js')
 const sequelize = require('./dModels/models.js').sequelize;
 const Product = require('./dModels/models.js').Product;
-const Test = require('./dModels/models.js').Test;
 const app = express();
 const compiler = webpack(config);
 const axios = require('axios');
 const eventbriteAPI = require('node-eventbrite');
+
 
 const token = process.env.OAUTH_TOKEN;
 
