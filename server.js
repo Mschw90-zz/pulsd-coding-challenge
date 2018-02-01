@@ -42,7 +42,7 @@ app.post('/addProduct', function(req, res) {
     // validation step
     Product.create({
       product_name: req.body.name,
-      product_description: req.body.discription,
+      product_description: req.body.description,
       product_price: req.body.price,
       product_location: req.body.location,
       product_phonenumber: req.body.phoneNumber,
@@ -51,35 +51,36 @@ app.post('/addProduct', function(req, res) {
       event_end_timezone: req.body.timezone,
       event_start_time: req.body.startTime,
       event_end_time: req.body.endTime,
-      curreny: 'USD',
+      currency: 'USD',
       online_event: true
     })
-      .then(()=>res.send('Success!'))
-      .catch(err=>console.log(err));
+    .then(()=>res.send('Success!'))
+    .catch(err=>console.log(err));
 });
 
 setInterval(
   function() {
       Product.findAll({where: {eventbrite: false}})
-        .then((product)=>{
-          product.map(event => {
-            api.create_event({
-              "event.name.html": event.product_name,
-              "event.description.html": event.product_description,
-              "event.start.utc": new Date(event.event_start_time).toJSON().replace(".000Z", "Z"),
-              "event.start.timezone": event.event_start_timezone,
-              "event.end.utc": new Date(event.event_end_time).toJSON().replace(".000Z", "Z"),
-              "event.end.timezone": event.event_end_timezone,
-              "event.currency": event.curreny,
-              "event.online_event": event.online_event
-            }, function (error, data) {
-              if (error){
-                console.log(error.message)
-              } else {
-                event.update({eventbrite: true})
-                .catch(err=>console.log(err))
-              }
-            })
+      .then((product)=>{
+        product.map(event => {
+          api.create_event({
+            "event.name.html": event.product_name,
+            "event.description.html": event.product_description,
+            "event.start.utc": new Date(event.event_start_time).toJSON().replace(".000Z", "Z"),
+            "event.start.timezone": event.event_start_timezone,
+            "event.end.utc": new Date(event.event_end_time).toJSON().replace(".000Z", "Z"),
+            "event.end.timezone": event.event_end_timezone,
+            "event.currency": event.currency,
+            "event.online_event": event.online_event
+          }, function (error, data) {
+            if (error){
+              console.log(error.message)
+            } else {
+
+              event.update({eventbrite: true})
+              .catch(err=>console.log(err))
+            }
+          })
         })
         .catch(err=>console.log(err));
     })},1000 * 60 * 60)

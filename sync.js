@@ -1,5 +1,5 @@
-var models = require('./dModels/models');
-let sequelize = require('./dModels/models.js').sequelize;
+const models = require('./dModels/models');
+const sequelize = require('./dModels/models.js').sequelize;
 
 models.sequelize.sync({ force: true })
   .then(function() {

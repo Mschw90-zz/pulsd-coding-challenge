@@ -1,5 +1,5 @@
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_URI, {dialect: 'postgres'});
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(process.env.DATABASE_URI, {dialect: 'postgres'});
 
 sequelize.authenticate()
 .then(() => {
@@ -9,7 +9,7 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', err);
 });
 
-var Product = sequelize.define( 'products', {
+const Product = sequelize.define( 'products', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -56,7 +56,7 @@ var Product = sequelize.define( 'products', {
       type: Sequelize.STRING,
       allowNull: false
     },
-    curreny: {
+    currency: {
       type: Sequelize.STRING,
       allowNull: false
     },
@@ -68,7 +68,7 @@ var Product = sequelize.define( 'products', {
       type: Sequelize.BOOLEAN,
       allowNull: false
     }
-})
+});
 
 module.exports = {
     sequelize,

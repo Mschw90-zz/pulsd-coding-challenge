@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       name: '',
-      discription: '',
+      description: '',
       price: '',
       location: '',
       phoneNumber: '',
@@ -27,7 +27,7 @@ export default class App extends Component {
        console.log('register response', response.data);
        this.setState({
          name: '',
-         discription: '',
+         description: '',
          price: '',
          location: '',
          phoneNumber: '',
@@ -62,9 +62,9 @@ export default class App extends Component {
               onChange={(e)=>(this.setState({name: e.target.value}))}
             /><br />
             <TextField
-               value={this.state.discription}
-               floatingLabelText="Product Discription"
-               onChange={(e)=>(this.setState({discription: e.target.value}))}
+               value={this.state.description}
+               floatingLabelText="Product description"
+               onChange={(e)=>(this.setState({description: e.target.value}))}
                multiLine={true}
                rows={2}
              /><br />

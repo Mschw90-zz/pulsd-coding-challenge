@@ -6,17 +6,6 @@
     "start": "node server.js",
     "lint": "eslint src"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
-  ],
   "author": "Matt",
   "devDependencies": {
     "babel-core": "^6.0.20",
