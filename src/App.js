@@ -3,6 +3,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import DatePicker from 'material-ui/DatePicker';
+import Paper from 'material-ui/Paper';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ export default class App extends Component {
       phoneNumber: '',
       startTime: '',
       endTime: '',
+      timezone: ''
     };
   }
 
@@ -29,7 +32,8 @@ export default class App extends Component {
          location: '',
          phoneNumber: '',
          startTime: '',
-         endTime: ''
+         endTime: '',
+         timezone: ''
        })
        alert("Successful add to Database");
      })
@@ -40,64 +44,70 @@ export default class App extends Component {
      });
    }
 
-
   render() {
+    const style = {
+      minHeight: '94%',
+      flex: 1,
+      marginRight: '30%',
+      marginLeft: '30%',
+    };
     return (
-      <div>
-        <div>Admin Panel</div>
-        <div>
-          <TextField
-            floatingLabelText="Product Name"
-            value={this.state.name}
-            onChange={(e)=>(this.setState({name: e.target.value}))}
-          /><br />
-          <TextField
-             value={this.state.discription}
-             floatingLabelText="Product Discription"
-             onChange={(e)=>(this.setState({discription: e.target.value}))}
-             multiLine={true}
-             rows={2}
-           /><br />
-          <TextField
-            value={this.state.price}
-            onChange={(e)=>(this.setState({price: e.target.value}))}
-            floatingLabelText="Product Price"
-          /><br />
-          <TextField
-            value={this.state.location}
-            onChange={(e)=>(this.setState({location: e.target.value}))}
-            floatingLabelText="Location"
-          /><br />
-          <TextField
-            value={this.state.phoneNumber}
-            onChange={(e)=>(this.setState({phoneNumber: e.target.value}))}
-            floatingLabelText="Phone Number"
-          /><br />
-          <TextField
-            value={this.state.timezone}
-            onChange={(e)=>(this.setState({timezone: e.target.value}))}
-            floatingLabelText="Timezone (America/New_York)"
+      <div className="mainContainer">
+        <div className="title">Admin Panel</div>
+        <Paper style={style} zDepth={3} className="page">
+          <div className="inputBody">
+            <TextField
+              floatingLabelText="Product Name"
+              value={this.state.name}
+              onChange={(e)=>(this.setState({name: e.target.value}))}
+            /><br />
+            <TextField
+               value={this.state.discription}
+               floatingLabelText="Product Discription"
+               onChange={(e)=>(this.setState({discription: e.target.value}))}
+               multiLine={true}
+               rows={2}
+             /><br />
+            <TextField
+              value={this.state.price}
+              onChange={(e)=>(this.setState({price: e.target.value}))}
+              floatingLabelText="Product Price"
+            /><br />
+            <TextField
+              value={this.state.location}
+              onChange={(e)=>(this.setState({location: e.target.value}))}
+              floatingLabelText="Location"
+            /><br />
+            <TextField
+              value={this.state.phoneNumber}
+              onChange={(e)=>(this.setState({phoneNumber: e.target.value}))}
+              floatingLabelText="Phone Number"
+            /><br />
+            <TextField
+              value={this.state.timezone}
+              onChange={(e)=>(this.setState({timezone: e.target.value}))}
+              floatingLabelText="Timezone (America/New_York)"
 
-          /><br />
-          <br />
+            /><br />
+            <br />
 
-          <label>Start Time and Date</label><br/>
-          <input
-             onChange={(e)=>(this.setState({startTime: e.target.value}))}
-             type="datetime-local"
-             value={this.state.startTime}
+            <label>Start Time and Date</label><br/>
+            <input
+               onChange={(e)=>(this.setState({startTime: e.target.value}))}
+               type="datetime-local"
+               value={this.state.startTime}
 
-          ></input><br/>
-          <br />
-          <label>End Time and Date</label><br/>
-          <input
-             onChange={(e)=>(this.setState({endTime: e.target.value}))}
-             type="datetime-local"
-             value={this.state.endTime}
-          ></input><br/>
-          <br/>
+            ></input><br/>
+            <br />
+            <label>End Time and Date</label><br/>
+            <input
+               onChange={(e)=>(this.setState({endTime: e.target.value}))}
+               type="datetime-local"
+               value={this.state.endTime}
+            ></input><br/>
+            <br/>
 
-        </div>
+          </div>
 
 
         <RaisedButton
@@ -106,8 +116,7 @@ export default class App extends Component {
           style={{margin: 12}}
           onClick={this.register.bind(this)}
         />
-
-
+        </Paper>
       </div>
     );
   }

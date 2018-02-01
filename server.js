@@ -73,15 +73,16 @@ setInterval(
               "event.currency": event.curreny,
               "event.online_event": event.online_event
             }, function (error, data) {
-              if (error) console.log(error.message);
-              else {
+              if (error){
+                console.log(error.message)
+              } else {
                 event.update({eventbrite: true})
                 .catch(err=>console.log(err))
               }
             })
         })
         .catch(err=>console.log(err));
-    },1000 * 60 * 60)
+    })},1000 * 60 * 60)
 
 app.listen(PORT, error => {
   error

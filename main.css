@@ -1,0 +1,23 @@
+body {
+  background: #E8E8E8
+}
+
+.title {
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.inputBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+}
