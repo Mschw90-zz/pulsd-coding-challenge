@@ -76,14 +76,14 @@ setInterval(
             if (error){
               console.log(error.message)
             } else {
-
-              event.update({eventbrite: true})
+              event.upsert({eventbrite: true})
               .catch(err=>console.log(err))
             }
           })
         })
-        .catch(err=>console.log(err));
-    })},1000 * 60 * 60)
+      })
+      .catch(err=>console.log(err));
+    },1000 * 60 * 60)
 
 app.listen(PORT, error => {
   error
